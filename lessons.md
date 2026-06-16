@@ -1,87 +1,28 @@
-# lessons.md — your prep log
 
-One file for the whole prep. Keep two kinds of entry in **separate subsections each week** — don't mix them in one paragraph.
+# Week 1
 
-| Subsection | What goes here | How much detail |
-|------------|----------------|-----------------|
-| **From the materials** | Notes while watching or reading; answers to each week's reflection exercises | Usually one sentence per video chunk or paper section; reflection exercises can be a short paragraph each |
-| **Surprises** | Moments an LLM or agent surprised you — good or bad — in chat or in the IDE | Concrete: tool/model, what you asked, what came back, optional takeaway |
+# From the materials
+Video Note:Understood that LLMs are next token predictors and can memorize biological facts but struggle with precise mathematical or genomic coordinate arithmetic.
+Reflection:Tasks like searching for public gene IDs are easy for LLMs, but writing custom scripts to parse messy FASTQ data requires careful code validation because the LLM might hallucinate syntax.
 
-Commit and push weekly. By week 4 this file is one of the most useful artifacts you bring to Brno. (`reflection.md` in week 4 is separate — one final paragraph for assessment.)
+# Surprises
+ChatGPT Asked it to find the sequence length of human GAPDH gene. It gave a plausible number but mixed up cDNA length with genomic locus length. Takeaway:Always double-check sequence lengths from LLMs against official NCBI databases.
 
----
+# Week 2
 
-## From the materials — what to write
+# From the materials
+Video Note:Learned about the ReAct framework where agents think, act, and observe. It is crucial to give agents good tools (like compilers and bash access) to minimize errors.
+Reflection: Feature engineering requires domain knowledge. If we don't guide the agent on biological invariants, it will write code that runs perfectly but produces scientifically useless metrics.
 
-While watching or reading, stop every ~20 minutes (or after each major section) and add a line answering:
+# Surprises
+Antigravity agent Asked the agent to fix a broken script parsing a GFF3 file. The agent fixed the syntax error and the script ran, but it silently skipped the header lines incorrectly. Takeaway:Spot-check data rows before and after agent modifications.
 
-- *Video:* **What's the one thing I'd want to test from what I just heard?**
-- *Paper:* **What claim would I most want to verify on my own data?**
+# Week 3
 
-Each week may also assign a **reflection exercise** (structured thinking using the week's mental model). Put those answers here too — they are not required to be personal chat logs.
+# From the materials
+Video Note: Watched the lecture on Bio Foundation Models. Genomic LMs are powerful for zero-shot variant effect prediction but require proper benchmarking against published baselines.
+Reflection:When evaluating a genomic model on Genomic Benchmarks, the input formatting (like 0-based vs 1-based coordinates) changes the output entirely.
 
----
+# Surprises
+Claude Asked it to write a script using `fetch_proteins.py` to pull FASTA sequences. It forgot to handle API rate-limiting, and the NCBI server blocked the requests halfway through. Takeaway: Tell the agent to add sleep delays when fetching bio data from public APIs.
 
-## Surprises — what to write
-
-Add an entry whenever an LLM or agent catches you off guard. Include enough detail that you (or a classmate) could understand the moment months later.
-
-- **When** — approximate date
-- **Tool / model** — e.g. ChatGPT (free), Claude, Antigravity agent, Cursor, …
-- **What you asked** — paste or paraphrase the prompt; name any file or data involved
-- **What happened** — the surprising part
-- **Takeaway** (optional) — one line on what you'd do differently
-
-**Bad (too vague):** *"ChatGPT hallucinated something."*
-
-**Good:**
-
-> **2026-05-26 · ChatGPT (free, no browsing)** — Asked: *"What is the Ensembl ID for human BRCA1?"* Answered confidently with `ENSG00000012048` — correct — then cited a made-up paper (*Smith et al., Nature 2019*) and a DOI that 404s. **Takeaway:** right gene, invented provenance; never trust citations without checking.
-
-> **2026-06-03 · Antigravity agent** — Asked it to filter a BED file to chr21. Code ran, printed 1,842 lines, looked plausible. Checked: 0-based coordinates on a file the header said was 1-based. **Takeaway:** spot-check coordinate conventions before trusting counts.
-
----
-
-## Your entries
-
-(Add below. Newest at the bottom is fine — stay consistent.)
-
-### Week 1
-
-#### From the materials
-
-<!-- Karpathy / GeneGPT notes; reflection exercise (three tasks, why hard or easy for an LLM) -->
-
-#### Surprises
-
-<!-- Chatbot exercise; anything else that caught you off guard -->
-
-### Week 2
-
-#### From the materials
-
-<!-- ReAct / Karpathy Software 3.0 notes; trap-exercise discussion questions -->
-
-#### Surprises
-
-<!-- Trap exercise, mini-project, agent moments — be specific -->
-
-### Week 3
-
-#### From the materials
-
-<!-- Jumper lecture / CARBON reading notes -->
-
-#### Surprises
-
-<!-- FM exercises, agent handling of models, validation hooks -->
-
-### Week 4
-
-#### From the materials
-
-<!-- MCP / BixBench notes -->
-
-#### Surprises
-
-<!-- BioTerm-Bench, MCP demo, failure modes -->
