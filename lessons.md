@@ -25,7 +25,9 @@ Reflection:When evaluating a genomic model on Genomic Benchmarks, the input form
 
 # Surprises
 Claude Asked it to write a script using `fetch_proteins.py` to pull FASTA sequences. It forgot to handle API rate-limiting, and the NCBI server blocked the requests halfway through. Takeaway: Tell the agent to add sleep delays when fetching bio data from public APIs.
-Week 4
+
+
+# Week 4
 # From the materials
 Video Note: Learned about the three tool modes for agents. Mode 1 (writing scripts) is best for reproducible workflows, Mode 2 (direct CLI execution) is for quick exploration, and Mode 3 (MCP) provides structured, typed interfaces. Reflection: Frontier agents are helpful but still only hit around 17% accuracy on biological benchmarks like BixBench, meaning careful human validation of every output remains critical.
 # Surprises
