@@ -15,7 +15,7 @@ Video Note:Learned about the ReAct framework where agents think, act, and observ
 Reflection: Feature engineering requires domain knowledge. If we don't guide the agent on biological invariants, it will write code that runs perfectly but produces scientifically useless metrics.
 
 # Surprises
-Antigravity agent Asked the agent to fix a broken script parsing a GFF3 file. The agent fixed the syntax error and the script ran, but it silently skipped the header lines incorrectly. Takeaway:Spot-check data rows before and after agent modifications.
+Antigravity agent:Asked the agent to fix a broken script parsing a GFF3 file. The agent fixed the syntax error and the script ran, but it silently skipped the header lines incorrectly. Takeaway:Spot-check data rows before and after agent modifications.
 
 # Week 3
 
@@ -25,4 +25,12 @@ Reflection:When evaluating a genomic model on Genomic Benchmarks, the input form
 
 # Surprises
 Claude Asked it to write a script using `fetch_proteins.py` to pull FASTA sequences. It forgot to handle API rate-limiting, and the NCBI server blocked the requests halfway through. Takeaway: Tell the agent to add sleep delays when fetching bio data from public APIs.
+Week 4
+# From the materials
+Video Note: Learned about the three tool modes for agents. Mode 1 (writing scripts) is best for reproducible workflows, Mode 2 (direct CLI execution) is for quick exploration, and Mode 3 (MCP) provides structured, typed interfaces. Reflection: Frontier agents are helpful but still only hit around 17% accuracy on biological benchmarks like BixBench, meaning careful human validation of every output remains critical.
+# Surprises
+Antigravity agent : Tried to move a working script to a fresh virtual environment and it broke because the agent had left hidden dependencies and implicit libraries behind. Takeaway: Always test your pipeline in a clean environment before sharing it with others.
+Final Reflection (Brno Readiness)
+What I trust an agent to do: I trust agents to write boilerplate Python code, generate tests, look up syntax quickly, and suggest bash commands for tools like samtools.
+What I DO NOT trust an agent to do: I do not trust agents to interpret biological meaning correctly without supervision, or write coordinate-sensitive genomic code without silently introducing subtle logical errors.
 
